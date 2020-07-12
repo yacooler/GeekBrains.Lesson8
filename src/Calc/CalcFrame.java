@@ -1,44 +1,45 @@
 package Calc;
 
+
 import javax.swing.*;
 import java.awt.*;
 
 
-public class FrameCalc extends JFrame {
-    private static final int SIZE_WIDTH = 400;
-    private static final int SIZE_HEIGHT = 400;
+public class CalcFrame extends JFrame {
+
+    protected static final char[] CALC_KEYS = {
+            '7','8','9','+',
+            '4','5','6','-',
+            '1','2','3','*',
+            'C','0','=','/'};
 
 
+    public CalcFrame() {
 
-
-    public FrameCalc() {
-
-        setBounds(getGraphicsConfiguration().getBounds().width / 2 - SIZE_WIDTH / 2,
-                getGraphicsConfiguration().getBounds().height / 2 - SIZE_HEIGHT / 2,
-                SIZE_WIDTH, SIZE_HEIGHT);
+        setBounds(300,300,300,300);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Calc");
 
-        initComponents();
+        init();
 
         setVisible(true);
     }
 
-    private void initComponents(){
+    private void init(){
 
         JPanel borderPanel = new JPanel(new BorderLayout() );
 
         JPanel textPanel = new JPanel(new GridLayout (2,1));
         textPanel.add(new JLabel());
-        JTextField resultField = new JTextField("0");
+        JTextField resultField = new JTextField("");
         resultField.setHorizontalAlignment(SwingConstants.RIGHT);
         CalcKeyHandler calcKeyHandler = new CalcKeyHandler(resultField);
 
 
         JPanel gridPanel = new JPanel(new GridLayout(4,5));
-        for (int i = 0; i < CalcConstants.CALC_KEYS.length; i++) {
-            JButton button = new JButton(String.valueOf(CalcConstants.CALC_KEYS[i]));
+        for (int i = 0; i < CALC_KEYS.length; i++) {
+            JButton button = new JButton(String.valueOf(CALC_KEYS[i]));
             button.addActionListener(calcKeyHandler);
             gridPanel.add(button);
         }

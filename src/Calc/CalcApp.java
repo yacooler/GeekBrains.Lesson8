@@ -1,7 +1,7 @@
 package Calc;
 
-public class MainApp {
+public class CalcApp {
     public static void main(String[] args) {
-        new FrameCalc();
+        new CalcFrame();
     }
 }
