@@ -16,6 +16,8 @@ public class KeyHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        if (!(e.getSource() instanceof JButton)) { return; }
+
         char sourceChar = ((JButton) (e.getSource())).getText().charAt(0);
 
         switch (sourceChar){
